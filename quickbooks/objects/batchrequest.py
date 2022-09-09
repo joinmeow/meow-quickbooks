@@ -78,8 +78,6 @@ class BatchResponse(object):
 
 
 class BatchItemRequest(ToJsonMixin):
-    class_dict = {}
-    list_dict = {}
 
     qbo_object_name = "BatchItemRequest"
 
@@ -89,7 +87,6 @@ class BatchItemRequest(ToJsonMixin):
         self._original_object = None
 
     def set_object(self, obj):
-        self.class_dict[obj.qbo_object_name] = obj
         setattr(self, obj.qbo_object_name, obj)
         self._original_object = obj
 
@@ -98,9 +95,6 @@ class BatchItemRequest(ToJsonMixin):
 
 
 class IntuitBatchRequest(ToJsonMixin):
-    list_dict = {
-        "BatchItemRequest": BatchItemRequest
-    }
 
     def __init__(self):
         self.BatchItemRequest = []
