@@ -35,9 +35,7 @@ class BatchManager(object):
 
         batch = self.list_to_batch_request(obj_list)
         json = batch.to_json()
-        print(json)
         json_data = qb.batch_operation(json)
-        print(json_data)
         batch_response = self.batch_results_to_list(json_data, batch, obj_list)
 
         return batch_response
