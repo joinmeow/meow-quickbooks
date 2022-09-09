@@ -22,7 +22,7 @@ class ToJsonMixin(object):
         or properties that have a value of None
         """
         return lambda obj: str(obj) if isinstance(obj, decimal.Decimal) else dict((k, v) for k, v in obj.__dict__.items()
-                                if not k.startswith('_') and getattr(obj, k) is not None)
+                                if not (k.startswith('_') or "_dict" in k or k=="qbo_object_name") and getattr(obj, k) is not None)
 
 
 class FromJsonMixin(object):
