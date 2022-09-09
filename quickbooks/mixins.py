@@ -19,7 +19,7 @@ class ToJsonMixin(object):
         or properties that have a value of None
         """
         return lambda obj: dict((k, v) for k, v in obj.__dict__.items()
-                                if not k.startswith('_') and getattr(obj, k) is not None)
+                                if not (k.startswith('_') or k.startswith("class_dict")) and getattr(obj, k) is not None)
 
 
 class FromJsonMixin(object):
