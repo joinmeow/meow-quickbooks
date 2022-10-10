@@ -42,9 +42,9 @@ class BatchManager(object):
     def list_to_batch_request(self, obj_list):
         batch = IntuitBatchRequest()
 
-        for obj in obj_list:
+        for _id, obj in obj_list:
             batch_item = BatchItemRequest()
-            batch_item.bId = str(uuid.uuid4())
+            batch_item.bId = str(_id)
             batch_item.operation = self._operation
             batch_item.set_object(obj)
 
@@ -59,6 +59,7 @@ class BatchManager(object):
         for data in json_data['BatchItemResponse']:
             response_item = BatchItemResponse.from_json(data)
 
+            # TODO: use a set/dict instead of linear search on a list
             batch_item = [obj for obj in batch.BatchItemRequest if obj.bId == response_item.bId][0]
             response_item.set_object(batch_item.get_object())
 
