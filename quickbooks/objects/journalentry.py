@@ -94,4 +94,4 @@ class JournalEntry(DeleteMixin, QuickbooksManagedObject, QuickbooksTransactionEn
         self.CurrencyRef = None
 
     def __str__(self):
-        return str(self.TotalAmt)
+        return f"JournalEntry({self.DocNumber},{self.TotalAmt})"
