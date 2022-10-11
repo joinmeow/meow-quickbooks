@@ -65,6 +65,8 @@ class BatchItemResponse(FromJsonMixin):
     def get_object(self):
         return self._original_object
 
+    def __str__(self) -> str:
+        return f"{self.bId}:{self._original_object}"
 
 class BatchResponse(object):
 
@@ -94,6 +96,8 @@ class BatchItemRequest(ToJsonMixin):
     def get_object(self):
         return self._original_object
 
+    def __str__(self) -> str:
+        return f"{self.bId}:{self._original_object}"
 
 class IntuitBatchRequest(ToJsonMixin):
     list_dict = {

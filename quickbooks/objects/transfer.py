@@ -25,4 +25,4 @@ class Transfer(DeleteMixin, QuickbooksManagedObject, QuickbooksTransactionEntity
         self.ToAccountRef = None
 
     def __str__(self):
-        return str(self.Amount)
+        return f"Transfer({self.FromAccountRef},{self.Amount},{self.ToAccountRef})"
