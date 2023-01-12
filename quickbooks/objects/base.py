@@ -3,7 +3,7 @@ from ..mixins import ToDictMixin, ToJsonMixin, FromJsonMixin, ListMixin, ReadMix
 
 
 class QuickbooksBaseObject(ToJsonMixin, FromJsonMixin, ToDictMixin):
-    class_dict = {}
+    class_dict = {'Id', 'SyncToken'}
     list_dict = {}
     detail_dict = {}
 
