@@ -60,6 +60,7 @@ class BatchManager(object):
         for data in json_data['BatchItemResponse']:
             response_item = BatchItemResponse.from_json(data)
 
+            print("version 1")
             pprint(response_item.__dict__)
 
             # TODO: use a set/dict instead of linear search on a list
