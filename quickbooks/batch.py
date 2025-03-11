@@ -1,3 +1,4 @@
+from pprint import pprint
 import uuid
 
 from .client import QuickBooks
@@ -58,6 +59,8 @@ class BatchManager(object):
 
         for data in json_data['BatchItemResponse']:
             response_item = BatchItemResponse.from_json(data)
+
+            pprint(response_item)
 
             # TODO: use a set/dict instead of linear search on a list
             batch_item = [obj for obj in batch.BatchItemRequest if obj.bId == response_item.bId][0]
