@@ -60,13 +60,11 @@ class BatchManager(object):
         for data in json_data['BatchItemResponse']:
             response_item = BatchItemResponse.from_json(data)
 
-            print("version 3")
+            print("version 4")
 
             print("response_item")
             pprint(response_item.__dict__)
 
-            print("response_item.get_object()")
-            pprint(response_item.get_object())
             # TODO: use a set/dict instead of linear search on a list
             batch_item = [obj for obj in batch.BatchItemRequest if obj.bId == response_item.bId][0]
             response_item.set_object(batch_item.get_object())
@@ -82,6 +80,11 @@ class BatchManager(object):
                 new_object = class_obj.from_json(data[class_obj.qbo_object_name])
                 response.successes.append(new_object)
 
+        for batch_response in response.batch_responses:
+            print("batch_response")
+            pprint(batch_response.__dict__)
+            pprint(qb_document_number)
+        for success in response.successes:
         return response
 
 
