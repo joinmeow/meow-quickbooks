@@ -69,22 +69,36 @@ class BatchManager(object):
             batch_item = [obj for obj in batch.BatchItemRequest if obj.bId == response_item.bId][0]
             response_item.set_object(batch_item.get_object())
 
+            print("response_item.get_object()")
+            pprint(response_item.get_object())
+
             response.batch_responses.append(response_item)
 
             if response_item.Fault:
                 response_item.Fault.original_object = response_item.get_object()
                 response.faults.append(response_item.Fault)
-
             else:
                 class_obj = type(response_item.get_object())
                 new_object = class_obj.from_json(data[class_obj.qbo_object_name])
+                new_object.bId = response_item.bId
                 response.successes.append(new_object)
 
+        print("batch_responses")
         for batch_response in response.batch_responses:
             print("batch_response")
             pprint(batch_response.__dict__)
+            print("batch_response._original_object")
+            pprint(batch_response.get_object().__dict__)
+
+        print("original_list")
+        for qb_document_number, qb_object in response.original_list:
             pprint(qb_document_number)
+            pprint(qb_object.__dict__)
+
+        print("successes")
         for success in response.successes:
+            pprint(success.__dict__)
+
         return response
 
 
