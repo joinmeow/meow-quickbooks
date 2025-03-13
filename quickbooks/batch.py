@@ -1,5 +1,3 @@
-import uuid
-
 from .client import QuickBooks
 from .exceptions import QuickbooksException
 from .objects.batchrequest import IntuitBatchRequest, BatchItemRequest, BatchOperation, BatchResponse, BatchItemResponse
@@ -68,10 +66,10 @@ class BatchManager(object):
             if response_item.Fault:
                 response_item.Fault.original_object = response_item.get_object()
                 response.faults.append(response_item.Fault)
-
             else:
                 class_obj = type(response_item.get_object())
                 new_object = class_obj.from_json(data[class_obj.qbo_object_name])
+                new_object.bId = response_item.bId
                 response.successes.append(new_object)
 
         return response
