@@ -177,7 +177,7 @@ class QuickBooks(object):
 
         if self.minorversion:
             params['minorversion'] = self.minorversion
-        
+
         if request_id:
             params['requestid'] = request_id
 
@@ -267,6 +267,9 @@ class QuickBooks(object):
 
     def get_single_object(self, qbbo, pk):
         url = "{0}/company/{1}/{2}/{3}/".format(self.api_url, self.company_id, qbbo.lower(), pk)
+
+        print(f"url: {url}")
+
         result = self.get(url, {})
 
         return result
