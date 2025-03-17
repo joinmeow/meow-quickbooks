@@ -266,7 +266,9 @@ class QuickBooks(object):
             request_type, url, headers=headers, params=params, data=data)
 
     def get_single_object(self, qbbo, pk):
-        url = "{0}/company/{1}/{2}/{3}/".format(self.api_url, self.company_id, qbbo.lower(), pk)
+        url = "{0}/company/{1}/{2}/{3}".format(
+            self.api_url, self.company_id, qbbo.lower(), pk
+        )
 
         print(f"url: {url}")
 
