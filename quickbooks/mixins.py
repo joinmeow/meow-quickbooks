@@ -98,6 +98,8 @@ class ReadMixin(object):
 
     @classmethod
     def get(cls, id, qb=None):
+        print("get has been called 1")
+
         if not qb:
             qb = QuickBooks()
 
