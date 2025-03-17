@@ -1,3 +1,4 @@
+from pprint import pprint
 from future.moves.urllib.parse import quote
 
 try: import simplejson as json
@@ -101,6 +102,8 @@ class ReadMixin(object):
             qb = QuickBooks()
 
         json_data = qb.get_single_object(cls.qbo_object_name, pk=id)
+        pprint("json data 1")
+        pprint(json_data)
 
         if cls.qbo_json_object_name != '':
             return cls.from_json(json_data[cls.qbo_json_object_name])
