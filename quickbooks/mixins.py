@@ -9,7 +9,7 @@ from .utils import build_choose_clause, build_where_clause
 class DecimalEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, decimal.Decimal):
-            return str(o)
+            return float(o)
         return super(DecimalEncoder, self).default(o)
 
 class ToJsonMixin(object):
@@ -21,7 +21,7 @@ class ToJsonMixin(object):
         filter out properties that have names starting with _
         or properties that have a value of None
         """
-        return lambda obj: str(obj) if isinstance(obj, decimal.Decimal) else dict((k, v) for k, v in obj.__dict__.items()
+        return lambda obj: float(obj) if isinstance(obj, decimal.Decimal) else dict((k, v) for k, v in obj.__dict__.items()
                                 if not (k.startswith('_') or "_dict" in k or k=="qbo_object_name") and getattr(obj, k) is not None)
 
 
