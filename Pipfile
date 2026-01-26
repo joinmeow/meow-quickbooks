@@ -6,16 +6,22 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-urllib3 = ">=1.26.5"
+urllib3 = ">=2.6.3"
 bleach = ">=3.3.0"
 intuit-oauth = "==1.2.4"
 rauth = ">=0.7.3"
-requests = ">=2.26.0"
+requests = ">=2.32.4"
 simplejson = ">=3.17.0"
 six = ">=1.14.0"
 nose = "*"
 coverage = "*"
 twine = "*"
+certifi = ">=2024.7.4"
+python-jose = {version = ">=3.4.0", extras = ["cryptography"]}
+zipp = ">=3.19.1"
+idna = ">=3.7"
+pygments = ">=2.15.0"
+tqdm = ">=4.66.3"
 
 [requires]
-python_version = "3.8"
+python_version = "3"

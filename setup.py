@@ -33,10 +33,14 @@ setup(
         'setuptools',
         'intuit-oauth==1.2.4',
         'rauth>=0.7.3',
-        'requests>=2.26.0',
+        'requests>=2.32.4',
         'simplejson>=3.17.0',
         'six>=1.14.0',
         'python-dateutil',
+        'urllib3>=2.6.3',
+        'certifi>=2024.7.4',
+        'python-jose[cryptography]>=3.4.0',
+        'idna>=3.7',
     ],
 
     classifiers=[
